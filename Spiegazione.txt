@@ -1,0 +1,18 @@
+-Il main chiama l'application controller, che implementa l'interfaccia controller, ho messo una interfaccia controller che ognuno deve rispettare.
+Dobbiamo fare un caso d'uso login: quindi acquisisco dall'utente le credenziali, come?
+
+-L'app controller comunica con il login controller, per acquisire le credenziali.
+ Il login controller chiederà alla view di acquisire le credenziali e restituirle a lui, poi cosa farà: una volta chieste le credenziali, il login controller
+ verificherà che le credenziali siano apposto, cioè se sono presenti nel DB -> comunica con il LoginDAO
+
+-Il loginDAO è l'intermediario tra DB e logica applicativa, quindi comunica con la connectionfactory per farsi dare una connessione al DB, e poi verifica : se l'utente esiste, facciamo una certa cosa, ad esempio mi faccio dare il ruolo, ottengo il ruolo dell'utente(è un esempietto banale). Ritorna poi le credenziali al LoginController.
+
+-Ora, il loginController ha verificato che ci siano quelle credenziali, e ha quindi le credenziali complete ora ! (prima ruolo = null,ora ce le ho) e le passa alla view per mostrare il messaggio di benvenuto.
+
+-Ho finito il login, torno all'app controller, che a seconda del ruolo, userà una certa view per stampare qualcosa a quell'utente(e.g dashboard)
+
+
+
+Considerazioni dalle lezioni di ISPW e Basi:
+
+1) Schema generale (come procedere in ogni situazione) -> 
